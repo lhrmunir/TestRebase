@@ -1,0 +1,11 @@
+https://mkyong.com/java8/is-comparator-a-function-interface-but-it-has-two-abstract-methods/
+=================================================================================================
+Is Comparator a function interface, but it has two abstract methods?
+
+Answer
+Yes, Comparator is a functional interface. The equals is an abstract method overriding one of the public methods of java.lang.Object, this doesn’t count as an abstract method.
+
+
+boolean equals(Object obj);
+The Comparator only has one abstract method int compare(T o1, T o2), and it meet the definition of functional interface.
+

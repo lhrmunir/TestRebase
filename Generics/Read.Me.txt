@@ -1,0 +1,22 @@
+https://stackoverflow.com/questions/11377248/return-type-of-java-generic-methods
+
+Please see attached images (img_step_1.png, and img_step_2.png).
+/*
+    The < E > is called a formal type parameter.
+    It is not the return type of the method.
+    It basically says that the method can accept as parameters arrays of different types (E[] inputArray).
+*/
+
+ public static <E> void printArray( E[] inputArray ) {
+     // Display array elements
+     for ( E element : inputArray ){
+        System.out.printf( "%s ", element );
+     }
+     System.out.println();
+   }
+
+/*
+    It's not the type of the returned object.
+    It indicates that E, in the method signature, is a generic type and not a concrete type.
+    Without it, the compiler would look for a class named E for the argument of the method.
+*/

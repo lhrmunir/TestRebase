@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://beginnersbook.com/2017/10/method-references-in-java-8/ -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./Java 8 Method Reference_files/amp4ads-host-v0.js.download"></script><script src="./Java 8 Method Reference_files/pubads_impl_rendering_2019090501.js.download"></script><script src="./Java 8 Method Reference_files/jquery.color-2.1.2.min.js.download"></script><script async="" src="./Java 8 Method Reference_files/analytics.js.download"></script><script async="" src="./Java 8 Method Reference_files/apstag.js.download"></script><script type="text/javascript">!function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={init:function(){q("i",arguments)},fetchBids:function(){q("f",arguments)},setDisplayBids:function(){},targetingKeys:function(){return[]},_Q:[]};A=p.createElement(s);A.async=!0;A.src=t;g=p.getElementsByTagName(s)[0];g.parentNode.insertBefore(A,g)}("apstag",window,document,"script","//c.amazon-adsystem.com/aax2/apstag.js");</script><script type="text/javascript" async="" src="./Java 8 Method Reference_files/videoplayer.js.download"></script><script type="text/javascript" async="" src="./Java 8 Method Reference_files/prebid.js.download"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Java 8 Method Reference</title>
+
+<!-- This site is optimized with the Yoast SEO plugin v11.9 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="In the previous tutorial we learned lambda expressions in Java 8. Here we will discuss another new feature of java 8, method reference. Method reference">
+<link rel="canonical" href="https://beginnersbook.com/2017/10/method-references-in-java-8/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 8 Method Reference">
+<meta property="og:description" content="In the previous tutorial we learned lambda expressions in Java 8. Here we will discuss another new feature of java 8, method reference. Method reference">
+<meta property="og:url" content="https://beginnersbook.com/2017/10/method-references-in-java-8/">
+<meta property="og:site_name" content="beginnersbook.com">
+<meta property="article:section" content="Java 8 Features">
+<meta property="article:published_time" content="2017-10-02T17:21:07+00:00">
+<meta property="article:modified_time" content="2017-10-02T18:08:04+00:00">
+<meta property="og:updated_time" content="2017-10-02T18:08:04+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="In the previous tutorial we learned lambda expressions in Java 8. Here we will discuss another new feature of java 8, method reference. Method reference">
+<meta name="twitter:title" content="Java 8 Method Reference">
+<script async="" type="text/javascript" src="./Java 8 Method Reference_files/gpt.js.download"></script><script type="application/ld+json" class="yoast-schema-graph yoast-schema-graph--main">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://beginnersbook.com/#website","url":"https://beginnersbook.com/","name":"beginnersbook.com","potentialAction":{"@type":"SearchAction","target":"https://beginnersbook.com/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"https://beginnersbook.com/2017/10/method-references-in-java-8/#webpage","url":"https://beginnersbook.com/2017/10/method-references-in-java-8/","inLanguage":"en-US","name":"Java 8 Method Reference","isPartOf":{"@id":"https://beginnersbook.com/#website"},"datePublished":"2017-10-02T17:21:07+00:00","dateModified":"2017-10-02T18:08:04+00:00","author":{"@id":"https://beginnersbook.com/#/schema/person/64cfb5962c2792e3bcf861bfeb16a9ab"},"description":"In the previous tutorial we learned lambda expressions in Java 8. Here we will discuss another new feature of java 8, method reference. Method reference"},{"@type":["Person"],"@id":"https://beginnersbook.com/#/schema/person/64cfb5962c2792e3bcf861bfeb16a9ab","name":"Chaitanya Singh","image":{"@type":"ImageObject","@id":"https://beginnersbook.com/#authorlogo","url":"https://secure.gravatar.com/avatar/6589689a49b9fc28b4ab1aee34ba1acb?s=96&d=monsterid&r=g","caption":"Chaitanya Singh"},"sameAs":[]}]}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="https://beginnersbook.com/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="beginnersbook.com » Feed" href="https://feeds.feedburner.com/BeginnersBookFeed">
+<link rel="alternate" type="application/rss+xml" title="beginnersbook.com » Comments Feed" href="https://beginnersbook.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="beginnersbook.com » Method References in Java 8 Comments Feed" href="https://beginnersbook.com/2017/10/method-references-in-java-8/feed/">
+<link rel="stylesheet" id="news-pro-theme-css" href="./Java 8 Method Reference_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-css" href="./Java 8 Method Reference_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="google-fonts-css" href="./Java 8 Method Reference_files/css" type="text/css" media="all">
+<script type="text/javascript" src="./Java 8 Method Reference_files/jquery.js.download"></script>
+<script type="text/javascript" src="./Java 8 Method Reference_files/jquery-migrate.min.js.download"></script>
+<script type="text/javascript" src="./Java 8 Method Reference_files/responsive-menu.js.download"></script>
+<link rel="https://api.w.org/" href="https://beginnersbook.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://beginnersbook.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://beginnersbook.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 5.2.3">
+<link rel="shortlink" href="https://beginnersbook.com/?p=7785">
+<link rel="alternate" type="application/json+oembed" href="https://beginnersbook.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fbeginnersbook.com%2F2017%2F10%2Fmethod-references-in-java-8%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://beginnersbook.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fbeginnersbook.com%2F2017%2F10%2Fmethod-references-in-java-8%2F&amp;format=xml">
+<script type="text/javascript" src="./Java 8 Method Reference_files/3281.js.download"></script><style type="text/css">.waldo-sticky-footer{position: fixed; width: 100%; bottom: 0px; left: 0px; text-align: center; z-index: 9995;}.waldo-sticky-footer iframe {margin-left: auto;margin-right: auto;}.waldo-sticky-sidebar{position: fixed; top: 10px;z-index: 90}.waldo-sticky-css{position: sticky; top: 10px; z-index: 90}.waldo-overlay{position: fixed;height: 100%;width: 100%;top: 0;left: 0;z-index: 105;background: rgba(0,0,0,0.7);}#waldo-counter {position: absolute;bottom: 0;right: 0;color: #fff;font-size: 30px;padding: 15px;}.waldo-bfleft {position: fixed; left: 0; top: 10px;z-index:101;}.waldo-bfright {position: fixed; right: 0; top: 10px;z-index:101;}#waldo-close-button a {border: 1px solid rgba(0,0,0,.35);padding: 3px;font-size: 12px;color: #fff;font-weight: bold;background-color: #777;}</style><script type="text/javascript">googletag.cmd.push(function() {gptAdSlots[3286] = googletag.defineSlot('/124067137/beginnersbook300x250FX_2', [300, 250], 'waldo-tag-3286').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[300, 250]]).addSize([768, 0], [[300, 250]]).addSize([0, 0], [[300, 250]]).build()).addService(googletag.pubads());gptAdSlots[3287] = googletag.defineSlot('/8491498/beginnersbook300x250FX_2_Universal_Passback_5be9d965210e5', [300, 250], 'waldo-tag-3287').addService(googletag.pubads());gptAdSlots[3288] = googletag.defineSlot('/124067137/beginnersbook728x90FL_1', [[728, 90], [320, 50]], 'waldo-tag-3288').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[728, 90]]).addSize([768, 0], [[320, 50]]).addSize([0, 0], [[320, 50]]).build()).addService(googletag.pubads());gptAdSlots[3289] = googletag.defineSlot('/8491498/beginnersbook728x90FL_1_Universal_Passback_5be9d96803a64', [[728, 90], [320, 50]], 'waldo-tag-3289').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[728, 90]]).addSize([768, 0], [[320, 50]]).addSize([0, 0], [[320, 50]]).build()).addService(googletag.pubads());gptAdSlots[3290] = googletag.defineSlot('/124067137/beginnersbook728x90FS_1', [[728, 90], [320, 50]], 'waldo-tag-3290').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[728, 90]]).addSize([768, 0], [[320, 50]]).addSize([0, 0], [[320, 50]]).build()).addService(googletag.pubads());gptAdSlots[3291] = googletag.defineSlot('/8491498/beginnersbook728x90FS_1_Universal_Passback_5be9d96c95e7c', [[728, 90], [320, 50]], 'waldo-tag-3291').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[728, 90]]).addSize([768, 0], [[320, 50]]).addSize([0, 0], [[320, 50]]).build()).addService(googletag.pubads());gptAdSlots[3282] = googletag.defineSlot('/124067137/beginnersbook160x600FX_1', [160, 600], 'waldo-tag-3282').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[160, 600]]).addSize([768, 0], [[160, 600]]).addSize([0, 0], [[160, 600]]).build()).addService(googletag.pubads());gptAdSlots[3283] = googletag.defineSlot('/8491498/beginnersbook160x600FX_1_Universal_Passback_5be9d95ebb219', [160, 600], 'waldo-tag-3283').addService(googletag.pubads());gptAdSlots[3284] = googletag.defineSlot('/124067137/beginnersbook300x250FX_1', [300, 250], 'waldo-tag-3284').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[300, 250]]).addSize([768, 0], [[300, 250]]).addSize([0, 0], [[300, 250]]).build()).addService(googletag.pubads());gptAdSlots[3285] = googletag.defineSlot('/8491498/beginnersbook300x250FX_1_Universal_Passback_5be9d961ed9b4', [300, 250], 'waldo-tag-3285').addService(googletag.pubads());gptAdSlots[3292] = googletag.defineSlot('/124067137/beginnersbook160x600FX_2', [160, 600], 'waldo-tag-3292').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[160, 600]]).addSize([768, 0], [[160, 600]]).addSize([0, 0], [[160, 600]]).build()).addService(googletag.pubads());gptAdSlots[3293] = googletag.defineSlot('/8491498/beginnersbook160x600FX_2_Universal_Passback_5beae30a7ecf2', [160, 600], 'waldo-tag-3293').addService(googletag.pubads());gptAdSlots[3340] = googletag.defineSlot('/124067137/beginnersbook728x90FS_3', [[728, 90], [300, 250], [320, 50]], 'waldo-tag-3340').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[728, 90], [300, 250]]).addSize([768, 0], [[300, 250], [320, 50]]).addSize([0, 0], [[300, 250], [320, 50]]).build()).addService(googletag.pubads());gptAdSlots[3341] = googletag.defineSlot('/8491498/beginnersbook728x90FS_3_Universal_Passback_5bf2a5b202245', [[728, 90], [300, 250]], 'waldo-tag-3341').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[728, 90]]).addSize([768, 0], [[300, 250]]).addSize([0, 0], [[300, 250]]).build()).addService(googletag.pubads());gptAdSlots[3342] = googletag.defineSlot('/124067137/beginnersbook728x90FS_2', [[728, 90], [300, 250], [320, 50]], 'waldo-tag-3342').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[728, 90], [300, 250]]).addSize([768, 0], [[300, 250], [320, 50]]).addSize([0, 0], [[300, 250], [320, 50]]).build()).addService(googletag.pubads());gptAdSlots[3343] = googletag.defineSlot('/8491498/beginnersbook728x90FS_2_Universal_Passback_5bf2a5b685644', [[728, 90], [300, 250]], 'waldo-tag-3343').defineSizeMapping(googletag.sizeMapping().addSize([1024, 0], [[728, 90]]).addSize([768, 0], [[300, 250]]).addSize([0, 0], [[300, 250]]).build()).addService(googletag.pubads());googletag.pubads().enableSingleRequest();googletag.enableServices();googletag.pubads().addEventListener('impressionViewable', function(event) {hb_refresh(event); hb_sroll_pause(event);});googletag.pubads().addEventListener('slotRenderEnded', function(event) {waldoAddCloseBtn(event); waldoPassbackInit(event);waldoInterstitialInit(event);})});</script><style type="text/css">.site-title a { background: url(https://beginnersbook.com/wp-content/uploads/2018/11/beginnersbook_logo.png) no-repeat !important; }</style>
+<link rel="icon" href="https://beginnersbook.com/wp-content/uploads/2016/03/favicon2.png" sizes="32x32">
+<link rel="icon" href="https://beginnersbook.com/wp-content/uploads/2016/03/favicon2.png" sizes="192x192">
+<link rel="apple-touch-icon-precomposed" href="https://beginnersbook.com/wp-content/uploads/2016/03/favicon2.png">
+<meta name="msapplication-TileImage" content="https://beginnersbook.com/wp-content/uploads/2016/03/favicon2.png">
+<script type="text/javascript" async="" src="./Java 8 Method Reference_files/a.min.js.download"></script><link rel="preload" href="./Java 8 Method Reference_files/f(4).txt" as="script"><script type="text/javascript" src="./Java 8 Method Reference_files/f(4).txt"></script><link rel="preload" href="./Java 8 Method Reference_files/f(5).txt" as="script"><script type="text/javascript" src="./Java 8 Method Reference_files/f(5).txt"></script><script src="./Java 8 Method Reference_files/pubads_impl_2019090501.js.download" async=""></script><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-35/html/container.html"></head>
+<body class="post-template-default single single-post postid-7785 single-format-standard custom-header header-image sidebar-content-sidebar news-pro-green" itemscope="" itemtype="https://schema.org/WebPage"><div class="site-container"><header class="site-header" itemscope="" itemtype="https://schema.org/WPHeader"><div class="wrap"><div class="title-area"><p class="site-title" itemprop="headline"><a href="https://beginnersbook.com/">beginnersbook.com</a></p></div><div class="widget-area header-widget-area"><section id="custom_html-38" class="widget_text widget widget_custom_html"><div class="widget_text widget-wrap"><div class="textwidget custom-html-widget"><!-- 728x90/320x50 -->
+<div id="waldo-tag-3290" data-processed="true" data-google-query-id="CLv9xPX70uQCFUzi1QodjW8AMw"><div id="google_ads_iframe_/124067137/beginnersbook728x90FS_1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/124067137/beginnersbook728x90FS_1_0" title="3rd party ad content" name="google_ads_iframe_/124067137/beginnersbook728x90FS_1_0" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" data-google-container-id="1r" data-load-complete="true" src="./Java 8 Method Reference_files/saved_resource.html"></iframe></div></div></div></div></section>
+</div></div></header><nav class="nav-primary" aria-label="Main" itemscope="" itemtype="https://schema.org/SiteNavigationElement"><div class="wrap"><div class="responsive-menu-icon"></div><ul id="menu-main-menu" class="menu genesis-nav-menu menu-primary responsive-menu"><li id="menu-item-6105" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-6105"><a href="https://beginnersbook.com/" itemprop="url"><span itemprop="name">Home</span></a></li>
+<li id="menu-item-8976" class="megamenu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-8976"><a href="https://beginnersbook.com/2017/10/method-references-in-java-8/#" itemprop="url"><span itemprop="name">All Tutorials</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-7076" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-7076"><a href="https://beginnersbook.com/2013/05/servlet-tutorial/" itemprop="url"><span itemprop="name">Learn Servlet</span></a></li>
+	<li id="menu-item-5679" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5679"><a href="https://beginnersbook.com/jsp-tutorial-for-beginners/" itemprop="url"><span itemprop="name">Learn JSP</span></a></li>
+	<li id="menu-item-6235" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6235"><a href="https://beginnersbook.com/jsp-jstl-tutorial-jstl-functions-and-core-tags/" itemprop="url"><span itemprop="name">Learn JSTL</span></a></li>
+	<li id="menu-item-6239" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6239"><a href="https://beginnersbook.com/2014/01/c-tutorial-for-beginners-with-examples/" itemprop="url"><span itemprop="name">Learn C</span></a></li>
+	<li id="menu-item-8977" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-8977"><a href="https://beginnersbook.com/2017/08/c-plus-plus-tutorial-for-beginners/" itemprop="url"><span itemprop="name">Learn C++</span></a></li>
+	<li id="menu-item-8978" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-8978"><a href="https://beginnersbook.com/2017/09/mongodb-tutorial/" itemprop="url"><span itemprop="name">Learn MongoDB</span></a></li>
+	<li id="menu-item-8979" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-8979"><a href="https://beginnersbook.com/2018/10/xml-tutorial-learn-xml/" itemprop="url"><span itemprop="name">Learn XML</span></a></li>
+	<li id="menu-item-8992" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-8992"><a href="https://beginnersbook.com/2018/03/python-tutorial-learn-programming/" itemprop="url"><span itemprop="name">Learn Python</span></a></li>
+	<li id="menu-item-6243" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6243"><a href="https://beginnersbook.com/2017/02/perl-tutorial-for-beginners/" itemprop="url"><span itemprop="name">Learn Perl</span></a></li>
+	<li id="menu-item-9648" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-9648"><a href="https://beginnersbook.com/2017/12/kotlin-tutorial/" itemprop="url"><span itemprop="name">Learn Kotlin</span></a></li>
+</ul>
+</li>
+<li id="menu-item-5678" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5678"><a href="https://beginnersbook.com/java-tutorial-for-beginners-with-examples/" itemprop="url"><span itemprop="name">Core Java</span></a></li>
+<li id="menu-item-5682" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5682"><a href="https://beginnersbook.com/2013/04/oops-concepts/" itemprop="url"><span itemprop="name">OOPs</span></a></li>
+<li id="menu-item-6236" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6236"><a href="https://beginnersbook.com/java-collections-tutorials/" itemprop="url"><span itemprop="name">Collections</span></a></li>
+<li id="menu-item-6237" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6237"><a href="https://beginnersbook.com/java-io-tutorial-with-examples/" itemprop="url"><span itemprop="name">Java I/O</span></a></li>
+<li id="menu-item-6242" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6242"><a href="https://beginnersbook.com/2015/04/json-tutorial/" itemprop="url"><span itemprop="name">JSON</span></a></li>
+<li id="menu-item-6241" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6241"><a href="https://beginnersbook.com/2015/04/dbms-tutorial/" itemprop="url"><span itemprop="name">DBMS</span></a></li>
+</ul></div></nav><div class="site-inner"><div class="content-sidebar-wrap"><main class="content"><article class="post-7785 post type-post status-publish format-standard category-java-8-features entry" itemscope="" itemtype="https://schema.org/CreativeWork"><header class="entry-header"><h1 class="entry-title" itemprop="headline">Method References in Java 8</h1>
+<p class="entry-meta">By <span class="entry-author" itemprop="author" itemscope="" itemtype="https://schema.org/Person"><span class="entry-author-name" itemprop="name">Chaitanya Singh</span></span> | <span class="entry-categories">Filed Under: <a href="https://beginnersbook.com/category/java-8-features/" rel="category tag">Java 8 Features</a></span> </p></header><div class="entry-content" itemprop="text"><p>In the previous tutorial we learned <a href="https://beginnersbook.com/2017/10/java-lambda-expressions-tutorial-with-examples/">lambda expressions in Java 8</a>. Here we will discuss another new feature of java 8, <strong>method reference</strong>. Method reference is a shorthand notation of a lambda expression to call a method. For example:<br>
+If your lambda expression is like this:</p>
+<pre class="prettyprint prettyprinted" style=""><span class="pln">str </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="typ">System</span><span class="pun">.</span><span class="kwd">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="pln">str</span><span class="pun">)</span></pre>
+<p>then you can replace it with a method reference like this:</p>
+<pre class="prettyprint prettyprinted" style=""><span class="typ">System</span><span class="pun">.</span><span class="kwd">out</span><span class="pun">::</span><span class="pln">println</span></pre>
+<p>The :: operator is used in method reference to separate the class or object from the method name(we will learn this with the help of examples).</p>
+<h2>Four types of method references</h2>
+<p>1. Method reference to an instance method of an object – object::instanceMethod<br>
+2. Method reference to a static method of a class – Class::staticMethod<br>
+3. Method reference to an instance method of an arbitrary object of a particular type – Class::instanceMethod<br>
+4. Method reference to a constructor – Class::new</p><div class="lq"><div data-type="ad" data-publisher="Beginnersbook.com" data-format="300x250" data-zone="ros"><iframe id="dm-gpt-iframe-1" width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" src="./Java 8 Method Reference_files/saved_resource(1).html"></iframe></div></div>
+<h2>1. Method reference to an instance method of an object</h2>
+<pre class="prettyprint prettyprinted" style=""><span class="lit">@FunctionalInterface</span><span class="pln"> 
+</span><span class="kwd">interface</span><span class="pln"> </span><span class="typ">MyInterface</span><span class="pun">{</span><span class="pln">  
+    </span><span class="kwd">void</span><span class="pln"> display</span><span class="pun">();</span><span class="pln">  
+</span><span class="pun">}</span><span class="pln">  
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Example</span><span class="pln"> </span><span class="pun">{</span><span class="pln">  
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> myMethod</span><span class="pun">(){</span><span class="pln">  
+	</span><span class="typ">System</span><span class="pun">.</span><span class="kwd">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"Instance Method"</span><span class="pun">);</span><span class="pln">  
+    </span><span class="pun">}</span><span class="pln">  
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">(</span><span class="typ">String</span><span class="pun">[]</span><span class="pln"> args</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">  
+	</span><span class="typ">Example</span><span class="pln"> obj </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Example</span><span class="pun">();</span><span class="pln">   
+	</span><span class="com">// Method reference using the object of the class</span><span class="pln">
+	</span><span class="typ">MyInterface</span><span class="pln"> </span><span class="kwd">ref</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> obj</span><span class="pun">::</span><span class="pln">myMethod</span><span class="pun">;</span><span class="pln">  
+	</span><span class="com">// Calling the method of functional interface  </span><span class="pln">
+	</span><span class="kwd">ref</span><span class="pun">.</span><span class="pln">display</span><span class="pun">();</span><span class="pln">  
+    </span><span class="pun">}</span><span class="pln">  
+</span><span class="pun">}</span></pre>
+<p>Output:</p>
+<pre class="prettyprint prettyprinted" style=""><span class="typ">Instance</span><span class="pln"> </span><span class="typ">Method</span></pre>
+<h2>2. Method reference to a static method of a class</h2>
+<pre class="prettyprint prettyprinted" style=""><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="kwd">function</span><span class="pun">.</span><span class="typ">BiFunction</span><span class="pun">;</span><span class="pln">  
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Multiplication</span><span class="pun">{</span><span class="pln">  
+   </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> multiply</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> a</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> b</span><span class="pun">){</span><span class="pln">  
+	</span><span class="kwd">return</span><span class="pln"> a</span><span class="pun">*</span><span class="pln">b</span><span class="pun">;</span><span class="pln">  
+   </span><span class="pun">}</span><span class="pln">  
+</span><span class="pun">}</span><span class="pln">  
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Example</span><span class="pln"> </span><span class="pun">{</span><span class="pln">  
+   </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">(</span><span class="typ">String</span><span class="pun">[]</span><span class="pln"> args</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">  
+	</span><span class="typ">BiFunction</span><span class="pun">&lt;</span><span class="typ">Integer</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Integer</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Integer</span><span class="pun">&gt;</span><span class="pln"> product </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Multiplication</span><span class="pun">::</span><span class="pln">multiply</span><span class="pun">;</span><span class="pln">  
+	</span><span class="kwd">int</span><span class="pln"> pr </span><span class="pun">=</span><span class="pln"> product</span><span class="pun">.</span><span class="pln">apply</span><span class="pun">(</span><span class="lit">11</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">);</span><span class="pln">  
+	</span><span class="typ">System</span><span class="pun">.</span><span class="kwd">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"Product of given number is: "</span><span class="pun">+</span><span class="pln">pr</span><span class="pun">);</span><span class="pln">  
+   </span><span class="pun">}</span><span class="pln">  
+</span><span class="pun">}</span></pre>
+<p>Output:</p>
+<pre class="prettyprint prettyprinted" style=""><span class="typ">Product</span><span class="pln"> of given number </span><span class="kwd">is</span><span class="pun">:</span><span class="pln"> </span><span class="lit">55</span></pre>
+<h2>3. Method reference to an instance method of an arbitrary object of a particular type</h2>
+<pre class="prettyprint prettyprinted" style=""><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="typ">Arrays</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Example</span><span class="pln"> </span><span class="pun">{</span><span class="pln">  
+
+   </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">(</span><span class="typ">String</span><span class="pun">[]</span><span class="pln"> args</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">  
+	</span><span class="typ">String</span><span class="pun">[]</span><span class="pln"> stringArray </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="str">"Steve"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Rick"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Aditya"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Negan"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Lucy"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Sansa"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Jon"</span><span class="pun">};</span><span class="pln">
+	</span><span class="com">/* Method reference to an instance method of an arbitrary 
+	 * object of a particular type
+	 */</span><span class="pln">
+	</span><span class="typ">Arrays</span><span class="pun">.</span><span class="pln">sort</span><span class="pun">(</span><span class="pln">stringArray</span><span class="pun">,</span><span class="pln"> </span><span class="typ">String</span><span class="pun">::</span><span class="pln">compareToIgnoreCase</span><span class="pun">);</span><span class="pln">
+	</span><span class="kwd">for</span><span class="pun">(</span><span class="typ">String</span><span class="pln"> str</span><span class="pun">:</span><span class="pln"> stringArray</span><span class="pun">){</span><span class="pln">
+		</span><span class="typ">System</span><span class="pun">.</span><span class="kwd">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="pln">str</span><span class="pun">);</span><span class="pln">
+	</span><span class="pun">}</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">  
+</span><span class="pun">}</span></pre>
+<p>Output:</p>
+<pre class="prettyprint prettyprinted" style=""><span class="typ">Aditya</span><span class="pln">
+</span><span class="typ">Jon</span><span class="pln">
+</span><span class="typ">Lucy</span><span class="pln">
+</span><span class="typ">Negan</span><span class="pln">
+</span><span class="typ">Rick</span><span class="pln">
+</span><span class="typ">Sansa</span><span class="pln">
+</span><span class="typ">Steve</span></pre>
+<h2>4. Method reference to a constructor</h2>
+<pre class="prettyprint prettyprinted" style=""><span class="lit">@FunctionalInterface</span><span class="pln"> 
+</span><span class="kwd">interface</span><span class="pln"> </span><span class="typ">MyInterface</span><span class="pun">{</span><span class="pln">  
+    </span><span class="typ">Hello</span><span class="pln"> display</span><span class="pun">(</span><span class="typ">String</span><span class="pln"> say</span><span class="pun">);</span><span class="pln">  
+</span><span class="pun">}</span><span class="pln">  
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Hello</span><span class="pun">{</span><span class="pln">  
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">Hello</span><span class="pun">(</span><span class="typ">String</span><span class="pln"> say</span><span class="pun">){</span><span class="pln">  
+        </span><span class="typ">System</span><span class="pun">.</span><span class="kwd">out</span><span class="pun">.</span><span class="kwd">print</span><span class="pun">(</span><span class="pln">say</span><span class="pun">);</span><span class="pln">  
+    </span><span class="pun">}</span><span class="pln">  
+</span><span class="pun">}</span><span class="pln">  
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Example</span><span class="pln"> </span><span class="pun">{</span><span class="pln">  
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">(</span><span class="typ">String</span><span class="pun">[]</span><span class="pln"> args</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
+    	</span><span class="com">//Method reference to a constructor</span><span class="pln">
+        </span><span class="typ">MyInterface</span><span class="pln"> </span><span class="kwd">ref</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Hello</span><span class="pun">::</span><span class="kwd">new</span><span class="pun">;</span><span class="pln">  
+        </span><span class="kwd">ref</span><span class="pun">.</span><span class="pln">display</span><span class="pun">(</span><span class="str">"Hello World!"</span><span class="pun">);</span><span class="pln">  
+    </span><span class="pun">}</span><span class="pln">  
+</span><span class="pun">}</span></pre>
+<p>Output:</p>
+<pre class="prettyprint prettyprinted" style=""><span class="typ">Hello</span><span class="pln"> </span><span class="typ">World</span><span class="pun">!</span></pre>
+<div class="bb-nav"><a class="pretut" href="https://beginnersbook.com/2017/10/java-lambda-expressions-tutorial-with-examples/">❮ Previous</a><a class="nexttut" href="https://beginnersbook.com/2017/10/java-functional-interfaces/">Next ❯</a></div>
+<p></p></div><footer class="entry-footer"><p class="entry-meta"></p></footer></article><div class="after-entry"><section id="custom_html-41" class="widget_text widget widget_custom_html"><div class="widget_text widget-wrap"><div class="textwidget custom-html-widget"><!-- 728x90/300x250/320x50 --><div id="waldo-tag-3340" data-processed="true" data-google-query-id="CKfT1_v70uQCFQLk5god5g8CnQ"><div id="google_ads_iframe_/124067137/beginnersbook728x90FS_3_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/124067137/beginnersbook728x90FS_3_0" title="3rd party ad content" name="google_ads_iframe_/124067137/beginnersbook728x90FS_3_0" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" data-google-container-id="1t" data-load-complete="true" src="./Java 8 Method Reference_files/saved_resource(2).html"></iframe></div></div></div></div></section>
+</div>	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://beginnersbook.com/2017/10/method-references-in-java-8/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="https://beginnersbook.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+				<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required="required"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" required="required"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="7785" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="a5cc2127a9"></p><p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1568554968383"></form>
+			</div><!-- #respond -->
+	</main><aside class="sidebar sidebar-primary widget-area" role="complementary" aria-label="Primary Sidebar" itemscope="" itemtype="https://schema.org/WPSideBar"><section id="search-2" class="widget widget_search"><div class="widget-wrap"><form class="search-form" itemprop="potentialAction" itemscope="" itemtype="https://schema.org/SearchAction" method="get" action="https://beginnersbook.com/" role="search"><input class="search-form-input" type="search" itemprop="query-input" name="s" id="searchform-1" placeholder="Search this website"><input class="search-form-submit" type="submit" value="Search"><meta itemprop="target" content="https://beginnersbook.com/?s={s}"></form></div></section>
+<section id="custom_html-39" class="widget_text widget widget_custom_html"><div class="widget_text widget-wrap"><div class="textwidget custom-html-widget"><!-- 160x600 -->
+<div id="waldo-tag-3283" data-processed="true" data-google-query-id="COXRpuX60uQCFW9gFQgdbKACZQ"><div id="google_ads_iframe_/8491498/beginnersbook160x600FX_1_Universal_Passback_5be9d95ebb219_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/8491498/beginnersbook160x600FX_1_Universal_Passback_5be9d95ebb219_0" title="3rd party ad content" name="google_ads_iframe_/8491498/beginnersbook160x600FX_1_Universal_Passback_5be9d95ebb219_0" width="160" height="600" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" data-google-container-id="z" data-load-complete="true" src="./Java 8 Method Reference_files/saved_resource(3).html"></iframe></div></div><div id="waldo-tag-3282" data-processed="true" data-google-query-id="CJ_NjOX60uQCFZ5jFQgd-asAzQ"></div></div></div></section>
+<section id="custom_html-40" class="widget_text widget widget_custom_html"><div class="widget_text widget-wrap"><div class="textwidget custom-html-widget"><!-- 160x600 -->
+<div id="waldo-tag-3292" data-processed="true" data-google-query-id="COqTsIL80uQCFdjk1QodpmcESg"><div id="google_ads_iframe_/124067137/beginnersbook160x600FX_2_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/124067137/beginnersbook160x600FX_2_0" title="3rd party ad content" name="google_ads_iframe_/124067137/beginnersbook160x600FX_2_0" width="160" height="600" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" data-google-container-id="1v" data-load-complete="true" src="./Java 8 Method Reference_files/saved_resource(4).html"></iframe></div></div></div></div></section>
+<section id="custom_html-29" class="widget_text widget widget_custom_html"><div class="widget_text widget-wrap"><div class="textwidget custom-html-widget"><div data-type="ad" data-publisher="Beginnersbook.com" data-format="160x600" data-zone="ros"><iframe id="dm-gpt-iframe-2" width="160" height="600" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" src="./Java 8 Method Reference_files/saved_resource(5).html"></iframe></div></div></div></section>
+<section id="custom_html-31" class="widget_text widget widget_custom_html"><div class="widget_text widget-wrap"><div class="textwidget custom-html-widget"><div data-type="ad" data-publisher="Beginnersbook.com" data-format="160x600" data-zone="ros"><iframe id="dm-gpt-iframe-3" width="160" height="600" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" src="./Java 8 Method Reference_files/saved_resource(6).html"></iframe></div></div></div></section>
+</aside></div><aside class="sidebar sidebar-secondary widget-area" role="complementary" aria-label="Secondary Sidebar" itemscope="" itemtype="https://schema.org/WPSideBar"><section id="custom_html-24" class="widget_text widget widget_custom_html"><div class="widget_text widget-wrap"><div class="textwidget custom-html-widget"><h2 class="widget-title">Java 8 Features</h2>
+<ul>
+<li><a href="https://beginnersbook.com/2017/10/java-lambda-expressions-tutorial-with-examples/">Lambda Expressions</a></li>
+<li><a href="https://beginnersbook.com/2017/10/method-references-in-java-8/">Method References</a></li>
+<li><a href="https://beginnersbook.com/2017/10/java-functional-interfaces/">Functional Interfaces</a></li>
+<li><a href="https://beginnersbook.com/2017/10/java-8-interface-changes-default-method-and-static-method/">Java 8 Interface changes</a></li>
+<li><a href="https://beginnersbook.com/2017/10/java-8-stream-tutorial/">Java 8 Stream API</a></li>
+<li><a href="https://beginnersbook.com/2017/10/java-8-stream-filter/">Stream Filter</a></li>
+<li><a href="https://beginnersbook.com/2017/10/java-8-foreach/">Java forEach()</a></li>
+<li><a href="https://beginnersbook.com/2017/10/java-8-stream-collectors-class-with-examples/">Collectors Class</a></li>
+<li><a href="https://beginnersbook.com/2017/10/java-8-stringjoiner/">StringJoiner Class</a></li>
+<li><a href="https://beginnersbook.com/2017/10/java-8-optional-class/">Optional Class</a></li>
+<li><a href="https://beginnersbook.com/2017/10/java-8-arrays-parallel-sort-with-example/">Arrays.parallelSort()</a></li>
+</ul></div></div></section>
+<section id="text-63" class="widget widget_text"><div class="widget-wrap"><h4 class="widget-title widgettitle">Recently Added..</h4>
+			<div class="textwidget"><ul>
+<li><a href="https://beginnersbook.com/2015/04/json-tutorial/">JSON Tutorial</a></li>
+<li><a href="https://beginnersbook.com/2014/08/java-regex-tutorial/">Java Regular Expressions Tutorial</a></li>
+<li><a href="https://beginnersbook.com/2014/09/java-enum-examples/">Java Enum Tutorial</a></li>
+<li><a href="https://beginnersbook.com/2014/09/java-annotations/">Java Annotations Tutorial</a></li>
+</ul>
+</div>
+		</div></section>
+</aside></div><footer class="site-footer" itemscope="" itemtype="https://schema.org/WPFooter"><div class="wrap"><p>Copyright © 2012 – 2019 BeginnersBook . <a href="https://beginnersbook.com/privacy/">Privacy Policy</a> . <a href="https://beginnersbook.com/sitemap_index.xml" title="Sitemap">Sitemap</a></p></div></footer></div><script type="text/javascript" src="./Java 8 Method Reference_files/prettify.js.download"></script>
+<script type="text/javascript" charset="utf-8">
+jQuery(document).ready(function($) {
+       $('pre').addClass("prettyprint");
+       prettyPrint();
+});
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35249844-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script type="text/javascript">
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script><script type="text/javascript" src="./Java 8 Method Reference_files/comment-reply.min.js.download"></script>
+<script type="text/javascript" src="./Java 8 Method Reference_files/wp-embed.min.js.download"></script>
+<script async="async" type="text/javascript" src="./Java 8 Method Reference_files/form.js.download"></script>
+
+</body><iframe sandbox="allow-scripts allow-same-origin" id="92bf4c908559105" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Java 8 Method Reference_files/cs.html">
+    </iframe></html>

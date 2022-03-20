@@ -1,0 +1,12 @@
+https://www.callicoder.com/java-lambda-expression-tutorial/
+
+https://stackify.com/streams-guide-java-8/
+
+https://stackify.dev/343532-using-streams-lambda-in-java-8
+
+GOOGLE SEARCH STRING : github callicoder java lambda tutorial
+
+https://github.com/callicoder/java-collections-examples
+https://github.com/callicoder/java-collections-examples.git
+
+
